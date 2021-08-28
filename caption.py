@@ -188,10 +188,12 @@ def visualize_att(image_path, seq, alphas, rev_word_map, smooth=True, fname=None
             plt.imshow(alpha, alpha=0.8)
         plt.set_cmap(cm.Greys_r)
         plt.axis('off')
-    plt.show()
     
     if fname is not None:
         plt.savefig(fname, bbox_inches='tight')
+    else:
+        plt.show()
+    
 
 
 if __name__ == '__main__':
