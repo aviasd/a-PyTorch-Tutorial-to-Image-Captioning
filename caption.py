@@ -148,7 +148,7 @@ def caption_image_beam_search(encoder, decoder, image_path, word_map, beam_size=
     return seq, alphas
 
 
-def visualize_att(image_path, seq, alphas, rev_word_map, smooth=True):
+def visualize_att(image_path, seq, alphas, rev_word_map, smooth=True, fname=None):
     """
     Visualizes caption with weights at every word.
 
@@ -164,7 +164,12 @@ def visualize_att(image_path, seq, alphas, rev_word_map, smooth=True):
     image = image.resize([14 * 24, 14 * 24], Image.LANCZOS)
 
     words = [rev_word_map[ind] for ind in seq]
-
+    
+    # plt subplot size
+    plt.figure(figsize=(15, 8))    
+    plt.gca().set_axis_off()
+    plt.subplots_adjust(top = 1, bottom = 0, right = 1, left = 0, hspace = 0, wspace = 0)
+    
     for t in range(len(words)):
         if t > 50:
             break
@@ -184,6 +189,9 @@ def visualize_att(image_path, seq, alphas, rev_word_map, smooth=True):
         plt.set_cmap(cm.Greys_r)
         plt.axis('off')
     plt.show()
+    
+    if fname is not None:
+        plt.savefig(fname, bbox_inches='tight')
 
 
 if __name__ == '__main__':
