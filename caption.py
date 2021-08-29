@@ -191,8 +191,8 @@ def visualize_att(image_path, seq, alphas, rev_word_map, smooth=True, fname=None
     
     if fname is not None:
         plt.savefig(fname, bbox_inches='tight')
-    else:
-        plt.show()
+        
+    plt.show()
     
 
 
